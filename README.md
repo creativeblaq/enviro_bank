@@ -1,16 +1,15 @@
 # enviro_bank
 
-A new Flutter project.
+#Enviro bank app
+The application is built with the MVC architecture.
+#Features
+  1.user authentication - registration, login and password reset
+  2.loan application
+  3.user sign out
+#Github link
+  https://github.com/creativeblaq/enviro_bank.git
+#Feedback
+To provide any feedback please contact me on edwin.tlhako@gmail.com / creativeblaq@gmail.com
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
