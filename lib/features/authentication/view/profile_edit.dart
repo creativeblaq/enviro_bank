@@ -1,29 +1,29 @@
 import 'package:awesome_flutter_extensions/all.dart' hide NavigatorX;
 import 'package:enviro_bank/features/authentication/controller/auth_controller.dart';
 import 'package:enviro_bank/features/authentication/model/auth_state.dart';
-import 'package:enviro_bank/features/loan/model/loan_application_model.dart';
+import 'package:enviro_bank/features/authentication/model/user_model.dart';
+import 'package:enviro_bank/features/authentication/model/validation_respnse_model.dart';
 import 'package:enviro_bank/utils/app_routes.dart';
 import 'package:enviro_bank/utils/constants.dart';
 import 'package:enviro_bank/widgets/forms/forms.dart';
 import 'package:enviro_bank/widgets/forms/profile_form.dart';
 import 'package:enviro_bank/widgets/glassish_container.dart';
+import 'package:enviro_bank/widgets/loading_button.dart';
 import 'package:enviro_bank/widgets/snack_response.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProfileScreen extends ConsumerWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen(this.prevPage, {Key? key}) : super(key: key);
+
+  final String prevPage;
 
   @override
   Widget build(BuildContext context, ref) {
     ref.listen<AuthState>(authControllerProvider, (previous, next) {
-      //print(next);
-
       if (next is AuthStateFail) {
         final res = next.props[0] as ValidationResponse;
-        print(res);
-
         if (res.success == false) {
           //print(res);
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -44,7 +44,6 @@ class ProfileScreen extends ConsumerWidget {
           }
         }
       } else {
-        //print(next);
         if (next is AuthStateSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackResponse.success(
@@ -58,7 +57,7 @@ class ProfileScreen extends ConsumerWidget {
 
     return WillPopScope(
       onWillPop: () {
-        context.go(AppRoutes.HOME_SCREEN);
+        context.go(prevPage);
         return Future.value(true);
       },
       child: Scaffold(
@@ -68,8 +67,25 @@ class ProfileScreen extends ConsumerWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: IconButton(
-              onPressed: () => context.go(AppRoutes.HOME_SCREEN),
+              onPressed: () => context.go(prevPage),
               icon: const Icon(Icons.chevron_left)),
+          actions: [
+            Visibility(
+              visible:
+                  ref.read(authControllerProvider.notifier).getUser() != null,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: LoadingButton(
+                  title: Strings.logout,
+                  color: Colors.red,
+                  onTap: () {
+                    ref.read(authControllerProvider.notifier).logout();
+                    context.go(AppRoutes.LOGIN_SCREEN);
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
         body: Container(
           height: context.height,
@@ -91,7 +107,9 @@ class ProfileScreen extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Profile Edit',
+                    ref.read(authControllerProvider.notifier).getUser() != null
+                        ? 'Profile Edit'
+                        : "Reset password",
                     style: context.h5,
                   ),
                   const SizedBox(

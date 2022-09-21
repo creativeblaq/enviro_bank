@@ -1,4 +1,3 @@
-import 'package:enviro_bank/features/authentication/controller/auth_controller.dart';
 import 'package:enviro_bank/features/authentication/repository/auth_repo.dart';
 import 'package:enviro_bank/utils/constants.dart';
 import 'package:enviro_bank/widgets/forms/default_text_field.dart';
@@ -26,7 +25,7 @@ class ProfileForm extends ConsumerWidget {
           name: Strings.emailField,
           prefixIcon: Icons.email,
           isOutlineBorder: true,
-          enabled: false,
+          enabled: user == null,
           initialValue: user?.emailAddress ?? "",
           hint: Strings.emailHint,
           textCapitilization: TextCapitalization.none,

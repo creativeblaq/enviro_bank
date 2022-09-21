@@ -81,12 +81,5 @@ class RegistrationForm extends StatelessWidget {
       onSubmit: onSubmit,
       btnRadius: 12,
     );
-    /* return SHFormTemplate(
-      form: SHForms.loginForm,
-      onSubmit: onSubmit,
-      formTitle: Strings.signIn,
-      formFields: FormConstants.loginTextFields,
-      btnRadius: 12.0,
-    ); */
   }
 }

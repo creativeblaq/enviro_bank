@@ -1,4 +1,5 @@
 import 'package:enviro_bank/features/loan/model/loan_application_model.dart';
+import 'package:enviro_bank/features/loan/model/loan_application_respose_model.dart';
 import 'package:equatable/equatable.dart';
 
 class LoanState extends Equatable {

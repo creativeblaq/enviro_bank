@@ -1,5 +1,8 @@
 import 'package:enviro_bank/features/loan/controller/loan_controller.dart';
+import 'package:enviro_bank/features/loan/model/bank_account_model.dart';
+import 'package:enviro_bank/features/loan/model/custom_exception_model.dart';
 import 'package:enviro_bank/features/loan/model/loan_application_model.dart';
+import 'package:enviro_bank/features/loan/model/loan_application_respose_model.dart';
 import 'package:enviro_bank/features/loan/model/loan_state.dart';
 import 'package:enviro_bank/features/loan/repository/loan_repo.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -53,7 +56,6 @@ void main() {
     test(
       "applies using the loan repo",
       () async {
-        //arrangeNewsServiceReturns3Articles();
         when(() => mockLoanRepository.apply(loanApplication)).thenAnswer(
           (invocation) async {
             return loanApplicationResponseSuccess;

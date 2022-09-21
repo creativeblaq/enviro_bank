@@ -11,7 +11,7 @@ void main() {
 class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  // This widget is the root of the application.
   @override
   Widget build(BuildContext context, ref) {
     final router = ref.watch(routerProvider);

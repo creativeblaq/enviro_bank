@@ -1,14 +1,12 @@
 import 'package:enviro_bank/features/loan/controller/loan_controller.dart';
+import 'package:enviro_bank/features/loan/model/bank_account_model.dart';
 import 'package:enviro_bank/features/loan/model/loan_application_model.dart';
+import 'package:enviro_bank/features/loan/model/loan_application_respose_model.dart';
 import 'package:enviro_bank/features/loan/model/loan_state.dart';
 import 'package:enviro_bank/features/loan/repository/loan_repo.dart';
 import 'package:enviro_bank/features/loan/view/home_screen.dart';
-import 'package:enviro_bank/features/loan/view/loan_form.dart';
 import 'package:enviro_bank/utils/constants.dart';
-import 'package:enviro_bank/widgets/LoadingButton.dart';
-import 'package:enviro_bank/widgets/snack_response.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mocktail/mocktail.dart';
@@ -26,7 +24,6 @@ class MockLoanRepositoryNoToken extends Mock implements LoanRepository {
 void main() {
   late LoanController sut;
   late MockLoanRepository mockLoanRepository;
-  late MockLoanRepositoryNoToken mockLoanRepositoryNoToken;
 
   final loanApplication = LoanApplication(
     5000.0,
@@ -40,15 +37,11 @@ void main() {
   final loanApplicationResponseSuccess =
       LoanApplicationResponse(true, [], [], "reference");
 
-  final loanApplicationResponseSuccessWithWaring =
-      LoanApplicationResponse(true, [], ["Warning"], "reference");
-
   final loanApplicationResponseFail =
       LoanApplicationResponse(false, [], [], "reference");
 
   setUp(() {
     mockLoanRepository = MockLoanRepository();
-    mockLoanRepositoryNoToken = MockLoanRepositoryNoToken();
     sut = LoanController(mockLoanRepository);
   });
 
@@ -149,13 +142,6 @@ void main() {
 
       await tester.pumpWidget(createWidgetUnderTest());
       createSubmittedFailResultWidgetsExpects();
-
-      /* if ((sut.getState() as LoanStateSuccess)
-          .applicationResponse
-          .warnings
-          .isNotEmpty) {
-        expect(find.byType(SnackBar), findsOneWidget);
-      } */
     },
   );
 

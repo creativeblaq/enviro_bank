@@ -7,13 +7,15 @@ class LoadingButton extends StatefulWidget {
     required this.title,
     required this.onTap,
     this.radius = 12,
+    this.color,
   }) : super(key: key);
   final String title;
   final Function() onTap;
   final double radius;
+  final Color? color;
 
   @override
-  _LoadingButtonState createState() => _LoadingButtonState();
+  State<LoadingButton> createState() => _LoadingButtonState();
 }
 
 class _LoadingButtonState extends State<LoadingButton> {
@@ -36,7 +38,7 @@ class _LoadingButtonState extends State<LoadingButton> {
           padding: EdgeInsets.symmetric(
               vertical: 8, horizontal: _isLoading ? 8 : 16),
           decoration: BoxDecoration(
-            color: context.colorScheme.secondary,
+            color: widget.color ?? context.colorScheme.secondary,
             borderRadius:
                 BorderRadius.circular(_isLoading ? 60 : widget.radius),
           ),

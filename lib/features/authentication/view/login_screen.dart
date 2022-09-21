@@ -1,7 +1,8 @@
 import 'package:awesome_flutter_extensions/all.dart';
 import 'package:enviro_bank/features/authentication/controller/auth_controller.dart';
 import 'package:enviro_bank/features/authentication/model/auth_state.dart';
-import 'package:enviro_bank/features/loan/model/loan_application_model.dart';
+import 'package:enviro_bank/features/authentication/model/user_model.dart';
+import 'package:enviro_bank/features/authentication/model/validation_respnse_model.dart';
 import 'package:enviro_bank/utils/app_routes.dart';
 import 'package:enviro_bank/utils/constants.dart';
 import 'package:enviro_bank/widgets/forms/forms.dart';
@@ -17,17 +18,13 @@ class LoginScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    //listen to the auth state
     ref.listen<AuthState>(authControllerProvider, (previous, next) {
-      //print(next);
-
       if (next is AuthStateFail) {
         final res = next.props[0] as ValidationResponse;
-        //  print(res);
-
+        //show errors to the user if any are available
         if (res.success == false) {
-          //print(res);
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
-
           if (res.errors.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackResponse.error(
@@ -52,11 +49,11 @@ class LoginScreen extends ConsumerWidget {
         width: context.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-              //colorFilter: ColorFilter.mode(SHColors.primaryVariant.withOpacity(0.6), BlendMode.darken),
-              image: AssetImage(
-                Strings.BgImage,
-              ),
-              fit: BoxFit.cover),
+            image: AssetImage(
+              Strings.BgImage,
+            ),
+            fit: BoxFit.cover,
+          ),
         ),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -92,6 +89,7 @@ class LoginScreen extends ConsumerWidget {
                 ),
                 InkWell(
                   onTap: () {
+                    //go to the registation page to create new user account
                     context.go(AppRoutes.REGISTRATION_SCREEN);
                   },
                   child: Padding(
@@ -106,6 +104,7 @@ class LoginScreen extends ConsumerWidget {
                           TextSpan(
                             text: " ${Strings.signUp} here",
                             style: context.subtitle2.copyWith(
+                              color: context.colorScheme.secondary,
                               decoration: TextDecoration.underline,
                             ),
                           ),

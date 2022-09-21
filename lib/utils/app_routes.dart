@@ -32,13 +32,14 @@ class RouterNotifier extends ChangeNotifier {
     );
   }
 
+  //redirect the user based on the auth state
   String? _redirectLogic(GoRouterState state) {
     final authState = _ref.read(authControllerProvider);
 
     if (state.location == AppRoutes.SPLASH_SCREEN) {
       return null;
     }
-    if (state.location == AppRoutes.PROFILE_SCREEN) {
+    if (state.location.contains(AppRoutes.PROFILE_SCREEN)) {
       return null;
     }
 
@@ -60,6 +61,7 @@ class AppRoutes {
   static String LOGIN_SCREEN = "/login";
   static String SPLASH_SCREEN = "/splash";
   static String PROFILE_SCREEN = "/profile";
+  static String PROFILE_SCREEN_NAME = "profile";
   static String REGISTRATION_SCREEN = "/register";
   static String HOME_SCREEN = "/";
 
@@ -81,7 +83,8 @@ class AppRoutes {
       path: PROFILE_SCREEN,
       name: "profile",
       builder: (BuildContext context, GoRouterState state) {
-        return const ProfileScreen();
+        final String prev = state.queryParams["from"] ?? "";
+        return ProfileScreen(prev);
       },
     ),
     GoRoute(

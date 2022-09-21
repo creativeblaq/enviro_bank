@@ -1,4 +1,4 @@
-import 'package:enviro_bank/widgets/LoadingButton.dart';
+import 'package:enviro_bank/widgets/loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -64,7 +64,7 @@ class _FormTemplateState extends State<FormTemplate> {
                     margin: const EdgeInsets.only(top: 8.0),
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: LoadingButton(
-                      key: Key(widget.formTitle + "-button"),
+                      key: Key("${widget.formTitle}-button"),
                       title: widget.formTitle,
                       onTap: () {
                         if (widget.formEnabled && _enableBtn) {

@@ -1,10 +1,12 @@
 import 'package:awesome_flutter_extensions/all.dart';
+import 'package:enviro_bank/utils/app_routes.dart';
 import 'package:enviro_bank/utils/constants.dart';
 import 'package:enviro_bank/widgets/forms/default_text_field.dart';
 import 'package:enviro_bank/widgets/forms/form_template.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -51,7 +53,10 @@ class LoginForm extends StatelessWidget {
           ],
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            context.goNamed(AppRoutes.PROFILE_SCREEN_NAME,
+                queryParams: {"from": AppRoutes.LOGIN_SCREEN});
+          },
           child: Container(
             alignment: Alignment.centerRight,
             child: RichText(

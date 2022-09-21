@@ -1,12 +1,14 @@
 import 'package:awesome_flutter_extensions/all.dart';
 import 'package:enviro_bank/features/authentication/controller/auth_controller.dart';
 import 'package:enviro_bank/features/loan/controller/loan_controller.dart';
+import 'package:enviro_bank/features/loan/model/bank_account_model.dart';
 import 'package:enviro_bank/features/loan/model/loan_application_model.dart';
+import 'package:enviro_bank/features/loan/model/loan_application_respose_model.dart';
 import 'package:enviro_bank/features/loan/model/loan_state.dart';
 import 'package:enviro_bank/features/loan/view/loan_form.dart';
 import 'package:enviro_bank/utils/app_routes.dart';
 import 'package:enviro_bank/utils/constants.dart';
-import 'package:enviro_bank/widgets/LoadingButton.dart';
+import 'package:enviro_bank/widgets/loading_button.dart';
 import 'package:enviro_bank/widgets/forms/forms.dart';
 import 'package:enviro_bank/widgets/glassish_container.dart';
 import 'package:enviro_bank/widgets/snack_response.dart';
@@ -57,11 +59,11 @@ class HomeScreen extends HookConsumerWidget {
             width: context.width,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  //colorFilter: ColorFilter.mode(SHColors.primaryVariant.withOpacity(0.6), BlendMode.darken),
-                  image: AssetImage(
-                    Strings.BgImage,
-                  ),
-                  fit: BoxFit.cover),
+                image: AssetImage(
+                  Strings.BgImage,
+                ),
+                fit: BoxFit.cover,
+              ),
             ),
             child: Container(
               height: context.height,
@@ -100,7 +102,8 @@ class HomeScreen extends HookConsumerWidget {
                       InkWell(
                         borderRadius: BorderRadius.circular(50),
                         onTap: () {
-                          context.go(AppRoutes.PROFILE_SCREEN);
+                          context.goNamed(AppRoutes.PROFILE_SCREEN_NAME,
+                              queryParams: {"from": AppRoutes.HOME_SCREEN});
                         },
                         child: GlassishContainer(
                           height: 48,
