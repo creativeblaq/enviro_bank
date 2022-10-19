@@ -10,7 +10,7 @@ class BankAccount {
   Map<String, dynamic> toMap() {
     return {
       'accountNumber': accountNumber,
-      'bankName': bankName,
+      'bankName': bankName.trim().replaceAll(" ", "_"),
       'branchCode': branchCode,
     };
   }
