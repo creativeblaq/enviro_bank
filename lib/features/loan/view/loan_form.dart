@@ -181,13 +181,6 @@ class _LoanApplicationFormState extends State<LoanApplicationForm> {
       btnRadius: 12,
       onSubmit: (form) => widget.onSubmit(form),
     );
-    /* return SHFormTemplate(
-      form: SHForms.LoanApplicationForm,
-      onSubmit: onSubmit,
-      formTitle: Strings.signIn,
-      formFields: FormConstants.LoanApplicationTextFields,
-      btnRadius: 12.0,
-    ); */
   }
 }
 

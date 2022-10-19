@@ -2,9 +2,9 @@ final List<String> bankOptions = [
   'ABSA',
   'CAPITEC',
   'FNB',
-  'INVESTEC_LIMITED',
-  'NEDBANK_LIMITED',
-  'STANDARD_BANK',
+  'INVESTEC LIMITED',
+  'NEDBANK LIMITED',
+  'STANDARD BANK',
   'VBS'
 ];
 
@@ -74,7 +74,8 @@ class Strings {
   static const String errorInvalidContact = 'Please enter a valid SA contact.';
   static const String errorInvalidEmail = 'Please enter a valid email.';
   static const String errorPassword =
-      'Password must be 8 characters and contain uppercase letter, one digit and one special character';
+      'Password must be 8 characters and contain uppercase letter, '
+      'one digit and one special character';
   static const String errorPasswordMatch = 'Passwords don\'t match';
 
   //Home page

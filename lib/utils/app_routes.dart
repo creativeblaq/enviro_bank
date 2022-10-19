@@ -64,6 +64,7 @@ class AppRoutes {
   static String PROFILE_SCREEN_NAME = "profile";
   static String REGISTRATION_SCREEN = "/register";
   static String HOME_SCREEN = "/";
+  static String HOME_SCREEN_NAME = "home";
 
   static List<GoRoute> routes = <GoRoute>[
     GoRoute(
@@ -74,14 +75,14 @@ class AppRoutes {
     ),
     GoRoute(
       path: HOME_SCREEN,
-      name: "home",
+      name: HOME_SCREEN_NAME,
       builder: (BuildContext context, GoRouterState state) {
         return const HomeScreen();
       },
     ),
     GoRoute(
       path: PROFILE_SCREEN,
-      name: "profile",
+      name: PROFILE_SCREEN_NAME,
       builder: (BuildContext context, GoRouterState state) {
         final String prev = state.queryParams["from"] ?? "";
         return ProfileScreen(prev);
