@@ -221,11 +221,13 @@ class HomeScreen extends HookConsumerWidget {
                                                   form, Strings.loanAmountField)
                                               .toString()),
                                           BankAccount(
-                                              Forms.getFormField(form,
-                                                  Strings.accountNumberField),
-                                              Forms.getFormField(
-                                                  form, Strings.bankNameField),
-                                              "code"),
+                                            Forms.getFormField(form,
+                                                Strings.accountNumberField),
+                                            Forms.getFormField(
+                                                form, Strings.bankNameField),
+                                            Forms.getFormField(
+                                                form, Strings.branchCodeField),
+                                          ),
                                           DateFormat("y-MM-dd").format(
                                               Forms.getFormField(form,
                                                   Strings.collectionDateField)),
