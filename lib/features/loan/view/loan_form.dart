@@ -249,8 +249,6 @@ class DefaultDateInputField extends StatelessWidget {
             color: context.iconTheme.color?.withOpacity(0.6),
           ),
         ),
-        //initialTime: const TimeOfDay(hour: 8, minute: 0),
-        // locale: const Locale.fromSubtags(languageCode: 'fr'),
       ),
     );
   }
