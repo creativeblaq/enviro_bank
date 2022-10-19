@@ -25,7 +25,6 @@ class ProfileScreen extends ConsumerWidget {
       if (next is AuthStateFail) {
         final res = next.props[0] as ValidationResponse;
         if (res.success == false) {
-          //print(res);
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
           if (res.errors.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(

@@ -3,13 +3,16 @@ import 'package:enviro_bank/features/authentication/model/user_model.dart';
 import 'package:enviro_bank/features/authentication/model/validation_respnse_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-///this class contains all the methods for making authentication
-///requests to the server
+///this class contains all the methods for making authentication requests to the server
+
 class AuthRepository {
   final String baseUrl =
       "http://ec2-63-33-169-221.eu-west-1.compute.amazonaws.com/loans-api/users";
 
   //the package for making requests easier
+  ///Http client for Dart, which supports Interceptors, Global configuration,
+  ///FormData, Request Cancellation, File downloading, Timeout etc
+
   var dio = Dio();
 
   //the auth user if available
@@ -64,6 +67,11 @@ class AuthRepository {
     } catch (err) {
       return false;
     }
+  }
+
+  //logout the user
+  void logout() {
+    user = null;
   }
 }
 

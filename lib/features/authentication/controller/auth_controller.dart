@@ -53,9 +53,8 @@ class AuthController extends StateNotifier<AuthState> {
     state = const AuthStateLoading();
     try {
       await ref.read(authRepositoryProvider).updatePassword(user);
-      state = AuthStateSuccess(
-        jwtToken: token,
-      );
+
+      await login(user);
     } on ValidationResponse catch (e) {
       state = AuthStateFail(response: e);
     } catch (e) {
@@ -71,7 +70,8 @@ class AuthController extends StateNotifier<AuthState> {
 //logout the user
   void logout() {
     token = "";
-    state = const AuthState();
+    ref.read(authRepositoryProvider).logout();
+    state = const AuthStateInitial();
   }
 }
 

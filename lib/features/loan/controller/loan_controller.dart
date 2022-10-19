@@ -32,14 +32,17 @@ class LoanController extends StateNotifier<LoanState> {
     }
   }
 
+  //Method to easily set the loan state to it's initial state
   void resetState() {
     state = const LoanStateInitial();
   }
 
+  //Method to easily set the current loan state
   setState(LoanState loanState) {
     state = loanState;
   }
 
+  //Method to easily get the current loan state
   getState() {
     return state;
   }

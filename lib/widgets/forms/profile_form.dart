@@ -8,6 +8,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+///Used to display the profile form to the user
+
 class ProfileForm extends ConsumerWidget {
   const ProfileForm({
     Key? key,
@@ -71,9 +73,6 @@ class ProfileForm extends ConsumerWidget {
             (text) {
               final pass = Forms.getFormField(form, Strings.passwordField);
               if (pass != text) {
-                /* form.currentState!.invalidateField(
-                  name: Strings.confirmPasswordField,
-                  errorText: Strings.errorPasswordMatch); */
                 return Strings.errorPasswordMatch;
               } else {
                 return null;
@@ -86,12 +85,5 @@ class ProfileForm extends ConsumerWidget {
       onSubmit: onSubmit,
       btnRadius: 12,
     );
-    /* return SHFormTemplate(
-      form: SHForms.loginForm,
-      onSubmit: onSubmit,
-      formTitle: Strings.signIn,
-      formFields: FormConstants.loginTextFields,
-      btnRadius: 12.0,
-    ); */
   }
 }

@@ -60,6 +60,7 @@ class LoanApplication {
 
   @override
   String toString() {
-    return 'LoanApplication(amount: $amount, bankAccount: $bankAccount, collectionDate: $collectionDate, firstName: $firstName, lastName: $lastName, idNumber: $idNumber)';
+    return 'LoanApplication(amount: $amount, bankAccount: $bankAccount, collectionDate: $collectionDate,'
+        ' firstName: $firstName, lastName: $lastName, idNumber: $idNumber)';
   }
 }

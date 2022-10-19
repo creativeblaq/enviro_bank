@@ -13,7 +13,7 @@ class SplashScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useEffect(() {
-      //shoe the splash screen for 3 seconds then navigate to the login screen
+      //show the splash screen for 3 seconds then navigate to the login screen
       Timer(
         const Duration(seconds: 3),
         () => context.go(AppRoutes.LOGIN_SCREEN),
@@ -26,7 +26,6 @@ class SplashScreen extends HookWidget {
           width: context.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
-                //colorFilter: ColorFilter.mode(SHColors.primaryVariant.withOpacity(0.6), BlendMode.darken),
                 image: AssetImage(
                   Strings.BgImage,
                 ),

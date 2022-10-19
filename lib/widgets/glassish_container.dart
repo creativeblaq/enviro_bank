@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+///reusable Glassmorphic container for app certain ui elements
+
 class GlassishContainer extends StatelessWidget {
   const GlassishContainer(
       {Key? key,

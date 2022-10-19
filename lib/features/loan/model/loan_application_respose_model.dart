@@ -48,6 +48,7 @@ class LoanApplicationResponse {
 
   @override
   String toString() {
-    return 'LoanApplicationResponse(approved: $approved, errors: $errors, warnings: $warnings, reference: $reference)';
+    return 'LoanApplicationResponse(approved: $approved, errors: $errors,'
+        ' warnings: $warnings, reference: $reference)';
   }
 }

@@ -14,10 +14,8 @@ class Strings {
   static const String appName = "Enviro Bank";
   static const String signIn = "Sign In";
   static const String signUp = "Sign Up";
-  static const String signUpWith = "Sign Up With";
   static const String alreadyHaveAccount = "Already have an account?";
   static const String createNewAccount = "Don't have an account? ";
-  static const String continueWithGoogle = "Continue with Google";
   static const String or = "Or";
   static const String cancel = "Cancel";
   static const String back = "Back";
@@ -31,9 +29,6 @@ class Strings {
   static const String forgotPass = 'Forgot password?';
   static const String resetPass = 'Reset password';
   static const String pleaseWait = 'Please wait...';
-  static const String sendResetLink = 'Send reset link';
-  static const String reAuth = 'Re-Authenticate';
-  static const String changeEmail = 'Update Email';
 
   //Form fields
   static const String idNumberField = 'Id Number';
@@ -84,7 +79,8 @@ class Strings {
 
   //Home page
   static const String introMessage =
-      "We’ve made applying for loans quick and simple. Click on apply below and get that loan today.";
+      "We’ve made applying for loans quick and simple. Click on apply below and get that loan today!";
   static const String startApplicationMessage =
-      "Okay we’re going to need a couple of things before we continue.  Please fill in the form.";
+      "Let's get started. We’re going to need a couple of details before we continue. "
+      "Please fill in the form below to apply.";
 }

@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
+///Used to display the Registration form to the user
+
 class RegistrationForm extends StatelessWidget {
   const RegistrationForm({
     Key? key,
@@ -66,9 +68,6 @@ class RegistrationForm extends StatelessWidget {
             (text) {
               final pass = Forms.getFormField(form, Strings.passwordField);
               if (pass != text) {
-                /* form.currentState!.invalidateField(
-                  name: Strings.confirmPasswordField,
-                  errorText: Strings.errorPasswordMatch); */
                 return Strings.errorPasswordMatch;
               } else {
                 return null;

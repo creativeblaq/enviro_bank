@@ -8,6 +8,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
+///Used to display the login form to the user
+
 class LoginForm extends StatelessWidget {
   const LoginForm({
     Key? key,
@@ -18,8 +20,10 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //* Using the form container
     return FormTemplate(
       formFields: (form) => [
+        //* form text fields we created
         DefaultTextField(
           name: Strings.emailField,
           prefixIcon: Icons.email,
@@ -54,6 +58,7 @@ class LoginForm extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
+            //* Navigate to Profile screen to change password
             context.goNamed(AppRoutes.PROFILE_SCREEN_NAME,
                 queryParams: {"from": AppRoutes.LOGIN_SCREEN});
           },
@@ -73,12 +78,5 @@ class LoginForm extends StatelessWidget {
       formTitle: Strings.signIn,
       onSubmit: (form) => onSubmit(form),
     );
-    /* return SHFormTemplate(
-      form: SHForms.loginForm,
-      onSubmit: onSubmit,
-      formTitle: Strings.signIn,
-      formFields: FormConstants.loginTextFields,
-      btnRadius: 12.0,
-    ); */
   }
 }

@@ -24,9 +24,11 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final user = ref.watch(authControllerProvider.notifier).getUser();
-    final scrollController = useScrollController();
     final loanController = ref.watch(loanControllerProvider);
     final loanControllerNotif = ref.watch(loanControllerProvider.notifier);
+
+    final scrollController = useScrollController();
+    //Control the enabled state of the form
     final formEnabled = useState(true);
     final startApplication = useState(false);
     final applicationSubmited = useState(false);
